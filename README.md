@@ -58,3 +58,17 @@ All routes except login and register are protected. A valid JWT token must be pa
 ---
 
 ## Project Structure
+crm-backend/
+├── app/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── services/
+├── config/
+├── tests/
+├── docs/
+└── server.js
+
+## Testing
+Run `npm test` to run the test suite.
