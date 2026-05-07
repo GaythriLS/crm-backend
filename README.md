@@ -1,67 +1,60 @@
-# CRM Backend
+# CRM Backend System
 
-A backend system for managing customers, support cases, and users — built with Node.js, Express, and MongoDB.
+This is a backend API for a Customer Relationship Management system. It handles user authentication, customer records, and support case tracking. Built as part of a backend development assignment using Node.js, Express, and MongoDB.
 
 ---
 
 ## Tech Stack
 
-- Node.js + Express
-- MongoDB + Mongoose
-- JWT for authentication
+- Node.js and Express for the server
+- MongoDB with Mongoose for the database
+- JWT for secure authentication
 - bcryptjs for password hashing
+- Nodemon for development
 
 ---
 
-## Getting Started
+## How to Run
 
-Clone the repo and install dependencies:
+1. Clone this repository
+2. Run `npm install` to install dependencies
+3. Create a `.env` file based on `.env.example` and add your values
+4. Make sure MongoDB is running on your machine
+5. Run `npm run dev` to start the development server
 
-npm install
-
-Create a .env file by copying the example and fill in your values:
-
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/crm_db
-JWT_SECRET=your_secret_key
-JWT_EXPIRES_IN=7d
-NODE_ENV=development
-
-Start the server:
-
-npm run dev
-
-Server runs at http://localhost:5000
+The server will start at `http://localhost:5000`
 
 ---
 
-## API Overview
+## API Endpoints
 
-Auth
-- POST /api/auth/register — create a new account
-- POST /api/auth/login — login and get a token
-- GET /api/auth/me — get logged in user info
+### Authentication
+- `POST /api/auth/register` — register a new user
+- `POST /api/auth/login` — login and get a JWT token
+- `GET /api/auth/me` — get current logged in user
 
-Customers
-- GET /api/customers — list all customers
-- POST /api/customers — add a new customer
-- GET /api/customers/:id — get one customer
-- PUT /api/customers/:id — update customer
-- DELETE /api/customers/:id — delete customer
+### Customers
+- `GET /api/customers` — get all customers
+- `POST /api/customers` — create a new customer
+- `GET /api/customers/:id` — get a specific customer
+- `PUT /api/customers/:id` — update customer details
+- `DELETE /api/customers/:id` — delete a customer
 
-Cases
-- GET /api/cases — list all cases
-- POST /api/cases — create a new case
-- PATCH /api/cases/:id — update case status
-- DELETE /api/cases/:id — delete a case
+### Cases
+- `GET /api/cases` — get all support cases
+- `POST /api/cases` — create a new case
+- `PATCH /api/cases/:id` — update a case
+- `DELETE /api/cases/:id` — delete a case
 
-Dashboard
-- GET /api/dashboard/stats — get overall system stats
-
-All routes except login and register require a Bearer token in the Authorization header.
+### Dashboard
+- `GET /api/dashboard/stats` — get total counts and recent activity
 
 ---
 
-## Notes
+## Security
 
-Passwords are hashed before saving to the database. Roles supported are admin, manager, and agent — each with different levels of access.
+All routes except login and register are protected. A valid JWT token must be passed in the Authorization header as a Bearer token. Users have roles — admin, manager, and agent — each with different permissions. Passwords are never stored as plain text.
+
+---
+
+## Project Structure
